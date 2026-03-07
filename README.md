@@ -1,258 +1,329 @@
-# RCK BANK - Modern Banking Platform
+<div align="center">
 
-A comprehensive banking platform inspired by Kaspi Bank, built with TypeScript, Vite, and Supabase. Features user authentication, account management, transfers, loans, and deposits.
+<img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" width="90" height="90" alt="Bank Logo">
 
-## 🚀 Architecture
+# 🏦 RCK BANK Platform
 
-### Frontend Stack
-- **Framework**: Vanilla TypeScript
-- **Build Tool**: Vite
-- **Styling**: CSS3 with Flexbox/Grid
-- **Backend Service**: Supabase (PostgreSQL + Auth)
+<h3 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=26&pause=1000&color=3B82F6&center=true&vCenter=true&width=700&lines=Modern+Digital+Banking+Platform;Kaspi-Style+Fintech+System;Accounts+Loans+Transfers+Deposits" alt="Typing SVG" />
+</h3>
 
-### Features
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/Vite-BuildTool-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+  <img src="https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white">
+  <img src="https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge&logo=postgresql&logoColor=white">
+</p>
 
-#### User Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Authentication-Secure-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Admin%20Panel-Enabled-blue?style=for-the-badge">
+</p>
+
+</div>
+
+---
+
+# 🌟 Overview
+
+**RCK BANK** is a modern digital banking platform inspired by fintech ecosystems like **Kaspi Bank**.
+
+The platform includes:
+
+- secure user authentication
+- bank account management
+- transfers
+- loan applications
+- deposit accounts
+- admin analytics dashboard
+
+The system is built using **TypeScript + Vite + Supabase** providing a full-stack banking simulation with real database integration.
+
+---
+
+# 🎯 Features
+
+## 👤 User Features
+
 ✅ **Authentication**
-- Sign up with email/password
-- Login functionality
-- Secure session management
+- Email/password registration  
+- Secure login  
+- Session management  
 
 ✅ **Bank Accounts**
-- Create multiple account types (Checking, Savings, Business)
-- View account balances
-- Track account status
+- Multiple account types  
+- Balance tracking  
+- Account status monitoring  
 
-✅ **Transfers**
-- Transfer money between accounts
-- Transaction descriptions
-- Real-time balance updates
+✅ **Money Transfers**
+- Transfer between accounts  
+- Transaction descriptions  
+- Real-time balance updates  
 
 ✅ **Loans**
-- Apply for loans with custom amounts
-- Select loan terms (6-60 months)
-- View loan status (pending/approved/rejected)
-- Track interest rates (12% APY)
+- Apply for loans  
+- Select loan term (6–60 months)  
+- Track loan status  
+- Interest rate system (12% APY)  
 
 ✅ **Deposits**
-- Create fixed-term deposits
-- Flexible terms: 30, 90, 180, 365 days
-- Interest rates: 8-10% APY
-- Track deposit status
+- Create fixed deposits  
+- Terms: 30 / 90 / 180 / 365 days  
+- Interest rates: 8–10%  
 
 ✅ **Transaction History**
-- View all transactions
-- Filter by account
-- Track transaction status
+- Full transaction list  
+- Filtering by account  
+- Status tracking  
 
-#### Admin Features
-✅ **Dashboard Analytics**
-- Total users count
-- Total balance across system
-- Active loans monitoring
-- Total deposits value
-- Transaction volume
+---
+
+## 🛠 Admin Features
+
+✅ **Analytics Dashboard**
+- Total users
+- Total system balance
+- Active loans
+- Total deposits
+- Transaction statistics
 
 ✅ **User Management**
 - View all users
-- User details and status
+- Account details
+- User status
 
-✅ **Account Management** 
-- Monitor all bank accounts
-- Update account status (active/frozen/closed)
-- Track account balances
+✅ **Account Administration**
+- Monitor accounts
+- Freeze / activate / close accounts
 
-✅ **Loan Administration**
-- View pending loan applications
-- Approve/reject loans
-- Auto-disburse approved loans to accounts
-- Track all loans
+✅ **Loan Management**
+- Approve or reject loans
+- Track loan applications
+- Auto-disburse funds
 
-## 📋 Project Structure
+---
+
+# 🏗️ System Architecture
+
+```mermaid
+graph TB
+
+A[User Interface] --> B[Frontend TypeScript App]
+
+B --> C[Supabase Auth]
+B --> D[Supabase Database]
+
+D --> E[Accounts]
+D --> F[Transactions]
+D --> G[Loans]
+D --> H[Deposits]
+
+B --> I[Admin Dashboard]
+```
+
+---
+
+# 🧰 Tech Stack
+
+### Frontend
+- TypeScript
+- Vite
+- HTML5 / CSS3
+- Flexbox / Grid
+
+### Backend
+- Supabase
+- PostgreSQL
+- REST API
+
+### Security
+- Supabase Authentication
+- Row Level Security (RLS)
+- Environment variables
+
+---
+
+# 📁 Project Structure
 
 ```
 RCK-bank-platform/
+
 ├── src/
 │   ├── components/
-│   │   ├── auth.ts           # Authentication UI
-│   │   ├── UserDashboard.ts  # User portal
-│   │   └── Admindashboard.ts # Admin panel
+│   │   ├── auth.ts
+│   │   ├── UserDashboard.ts
+│   │   └── Admindashboard.ts
+│   │
 │   ├── lib/
-│   │   ├── supabase.ts       # Supabase client & types
-│   │   ├── auth.ts           # Auth functions
-│   │   ├── banking.ts        # Banking operations
-│   │   └── admin.ts          # Admin functions
-│   ├── main.ts               # Application entry point
-│   ├── style.css             # Global styles
-│   └── vite-env.d.ts         # Vite environment types
+│   │   ├── supabase.ts
+│   │   ├── auth.ts
+│   │   ├── banking.ts
+│   │   └── admin.ts
+│   │
+│   ├── main.ts
+│   ├── style.css
+│   └── vite-env.d.ts
+│
 ├── supabase/
 │   └── migrations/
-│       └── bank_schema.sql   # Database schema
-├── dist/                      # Built files
-├── index.html                # Main HTML file
-├── package.json              # Dependencies
-├── vite.config.ts            # Vite configuration
-└── tsconfig.json             # TypeScript configuration
+│       └── bank_schema.sql
+│
+├── dist/
+├── index.html
+├── package.json
+├── vite.config.ts
+└── tsconfig.json
 ```
 
-## 🔧 Setup Guide
+---
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
-- Supabase account
+# 🚀 Installation
 
-### Installation
-
-1. **Install Dependencies**
 ```bash
+git clone https://github.com/yourusername/RCK-bank-platform.git
+
+cd RCK-bank-platform
+
 npm install
 ```
 
-2. **Configure Supabase**
-   - Create a Supabase project at https://supabase.com
-   - Copy your `ANON_KEY` and `PROJECT_URL`
-   - Update `.env` file:
+---
+
+# ⚙️ Setup Supabase
+
+1️⃣ Create project at:
+
 ```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_anon_key
+https://supabase.com
 ```
 
-3. **Setup Database**
-   - Go to Supabase SQL Editor
-   - Run the SQL from `supabase/migrations/bank_schema.sql`
-   - This creates all necessary tables
+2️⃣ Add environment variables
 
-4. **Create Admin User**
-   - Sign up as normal user first
-   - Go to Supabase Database → profiles table
-   - Set `is_admin = true` for your user account
+```
+VITE_SUPABASE_URL=your_url
+VITE_SUPABASE_ANON_KEY=your_key
+```
 
-5. **Start Development Server**
+3️⃣ Run SQL schema
+
+```
+supabase/migrations/bank_schema.sql
+```
+
+---
+
+# ▶ Run Development Server
+
 ```bash
 npm run dev
 ```
 
-6. **Build for Production**
-```bash
-npm run build
+App will run on:
+
 ```
-
-## 💾 Database Schema
-
-### Tables
-- **profiles** - User accounts and roles
-- **bank_accounts** - User bank accounts
-- **transactions** - Transfer history
-- **loans** - Loan applications and records
-- **deposits** - Deposit accounts
-
-## 🔐 Security Features
-
-✅ Supabase Auth for secure authentication
-✅ Row-level security (RLS) policies
-✅ Environment variables for sensitive data
-✅ HTTPS-only communication
-✅ Secure password requirements
-
-## 🎨 UI/UX Features
-
-- **Responsive Design** - Works on all devices
-- **Dark-friendly Colors** - Blue and gray professional palette
-- **Clear Navigation** - Intuitive tab-based navigation
-- **Modal Forms** - Elegant modal dialogs for actions
-- **Status Badges** - Clear visual status indicators
-- **Balance Formatting** - Professional currency display
-
-## 📱 Testing Users
-
-### Test Admin Account
-1. Sign up with any email: `admin@example.com`
-2. Go to Supabase Profiles table
-3. Set `is_admin = true`
-4. Login to access admin dashboard
-
-### Test User Account
-1. Create multiple regular accounts
-2. Each gets their own accounts, loans, and deposits
-3. Admin can manage all users
-
-## 🚀 Running the Application
-
-The application is live at: **http://localhost:5173/**
-
-### User Portal Features
-1. Log in to your account
-2. Create bank accounts
-3. Transfer money between accounts
-4. Apply for loans
-5. Create deposits
-6. View transaction history
-
-### Admin Portal Features
-1. View system statistics
-2. Manage user accounts
-3. Approve/reject loans
-4. Monitor deposits
-5. Update account statuses
-
-## 📊 Key Transactions
-
-### Money Transfer
-- Select from account ✓
-- Enter recipient account number ✓
-- Specify amount ✓
-- Add description ✓
-- Balance updates automatically ✓
-
-### Loan Application
-- Set loan amount (min 1,000 KZT) ✓
-- Select term (6-60 months) ✓
-- Automatic interest rate (12%) ✓
-- Admin approval workflow ✓
-- Automatic fund disbursement ✓
-
-### Deposit Creation
-- Set deposit amount (min 10,000 KZT) ✓
-- Choose term (30-365 days) ✓
-- Interest rates vary by term ✓
-- Automatic maturity calculation ✓
-
-## 🔊 API Integration
-
-All operations use Supabase REST API:
-- Real-time updates
-- Automatic scaling
-- Built-in PostgreSQL
-- No backend server needed
-
-## 📝 Currency
-
-All transactions in **KZT (Kazakhstani Tenge)**
-
-## 🤝 Support
-
-For issues or questions:
-1. Check Supabase status
-2. Verify environment variables
-3. Check browser console for errors
-4. Ensure database is properly initialized
-
-## 📄 License
-
-Created for RCK BANK demonstration
-
-## 🎯 Future Enhancements
-
-- [ ] Mobile app version
-- [ ] Multi-currency support
-- [ ] Investment products
-- [ ] Credit card management
-- [ ] Payment aggregation
-- [ ] Advanced analytics
-- [ ] Notification system
-- [ ] Two-factor authentication
+http://localhost:5173
+```
 
 ---
 
-**RCK BANK** - Your Modern Banking Solution 🏦
+# 📊 Database Schema
+
+| Table | Description |
+|------|-------------|
+| profiles | user accounts |
+| bank_accounts | user bank accounts |
+| transactions | transfer history |
+| loans | loan applications |
+| deposits | deposit accounts |
+
+---
+
+# 💳 Key Banking Operations
+
+## Money Transfer
+
+- choose sender account
+- enter receiver account
+- amount
+- description
+- automatic balance update
+
+---
+
+## Loan Application
+
+- loan amount ≥ 1000 KZT
+- choose term (6–60 months)
+- 12% interest rate
+- admin approval workflow
+
+---
+
+## Deposit Creation
+
+- minimum deposit: 10,000 KZT
+- terms: 30–365 days
+- interest: 8–10%
+
+---
+
+# 🔐 Security
+
+✅ Supabase Auth  
+✅ Row Level Security  
+✅ Secure environment variables  
+✅ HTTPS communication  
+
+---
+
+# 🎨 UI / UX
+
+- Responsive layout
+- Professional banking design
+- Dashboard analytics
+- Modal forms
+- Status badges
+- Currency formatting
+
+---
+
+# 🧪 Test Accounts
+
+### Admin
+
+```
+admin@example.com
+```
+
+Set `is_admin = true` in Supabase profiles table.
+
+---
+
+# 🪙 Currency
+
+All transactions use:
+
+**KZT — Kazakhstani Tenge**
+
+---
+
+# 🚀 Future Improvements
+
+- Mobile banking app
+- Multi-currency support
+- Investment services
+- Credit cards
+- Notification system
+- Two-factor authentication
+- Advanced analytics
+
+---
+
+<div align="center">
+
+### 🏦 RCK BANK  
+Modern Digital Banking Platform
+
+Built with Fintech • TypeScript • Supabase
+
+</div>
