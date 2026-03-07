@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Landmark, LayoutDashboard, ArrowLeftRight, PiggyBank, Wallet, LogOut, User, CreditCard, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
-
+/*str*/
 interface DashboardLayoutProps {
   children: ReactNode;
 }
