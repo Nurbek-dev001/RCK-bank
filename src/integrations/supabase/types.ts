@@ -14,16 +14,312 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cards: {
+        Row: {
+          card_holder: string
+          card_number: string
+          card_type: Database["public"]["Enums"]["card_type"]
+          created_at: string
+          daily_limit: number | null
+          expiry_date: string
+          id: string
+          is_virtual: boolean | null
+          monthly_limit: number | null
+          status: Database["public"]["Enums"]["card_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          card_holder: string
+          card_number: string
+          card_type?: Database["public"]["Enums"]["card_type"]
+          created_at?: string
+          daily_limit?: number | null
+          expiry_date: string
+          id?: string
+          is_virtual?: boolean | null
+          monthly_limit?: number | null
+          status?: Database["public"]["Enums"]["card_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          card_holder?: string
+          card_number?: string
+          card_type?: Database["public"]["Enums"]["card_type"]
+          created_at?: string
+          daily_limit?: number | null
+          expiry_date?: string
+          id?: string
+          is_virtual?: boolean | null
+          monthly_limit?: number | null
+          status?: Database["public"]["Enums"]["card_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      deposits: {
+        Row: {
+          accrued_interest: number | null
+          amount: number
+          closes_at: string | null
+          created_at: string
+          id: string
+          interest_rate: number
+          opened_at: string
+          plan_name: string
+          status: Database["public"]["Enums"]["deposit_status"]
+          term_months: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          accrued_interest?: number | null
+          amount: number
+          closes_at?: string | null
+          created_at?: string
+          id?: string
+          interest_rate: number
+          opened_at?: string
+          plan_name: string
+          status?: Database["public"]["Enums"]["deposit_status"]
+          term_months: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          accrued_interest?: number | null
+          amount?: number
+          closes_at?: string | null
+          created_at?: string
+          id?: string
+          interest_rate?: number
+          opened_at?: string
+          plan_name?: string
+          status?: Database["public"]["Enums"]["deposit_status"]
+          term_months?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      loan_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          due_date: string
+          id: string
+          interest: number
+          is_paid: boolean | null
+          loan_id: string
+          paid_at: string | null
+          payment_number: number
+          principal: number
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          due_date: string
+          id?: string
+          interest: number
+          is_paid?: boolean | null
+          loan_id: string
+          paid_at?: string | null
+          payment_number: number
+          principal: number
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          due_date?: string
+          id?: string
+          interest?: number
+          is_paid?: boolean | null
+          loan_id?: string
+          paid_at?: string | null
+          payment_number?: number
+          principal?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "loan_payments_loan_id_fkey"
+            columns: ["loan_id"]
+            isOneToOne: false
+            referencedRelation: "loans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      loans: {
+        Row: {
+          amount: number
+          approved_at: string | null
+          created_at: string
+          id: string
+          interest_rate: number
+          loan_type: Database["public"]["Enums"]["loan_type"]
+          monthly_payment: number
+          remaining_amount: number
+          status: Database["public"]["Enums"]["loan_status"]
+          term_months: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          approved_at?: string | null
+          created_at?: string
+          id?: string
+          interest_rate?: number
+          loan_type?: Database["public"]["Enums"]["loan_type"]
+          monthly_payment: number
+          remaining_amount: number
+          status?: Database["public"]["Enums"]["loan_status"]
+          term_months: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          approved_at?: string | null
+          created_at?: string
+          id?: string
+          interest_rate?: number
+          loan_type?: Database["public"]["Enums"]["loan_type"]
+          monthly_payment?: number
+          remaining_amount?: number
+          status?: Database["public"]["Enums"]["loan_status"]
+          term_months?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          credit_score: number | null
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          credit_score?: number | null
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          credit_score?: number | null
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          category: Database["public"]["Enums"]["transaction_category"]
+          created_at: string
+          currency: string
+          description: string | null
+          id: string
+          is_income: boolean | null
+          recipient_account: string | null
+          recipient_name: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          category?: Database["public"]["Enums"]["transaction_category"]
+          created_at?: string
+          currency?: string
+          description?: string | null
+          id?: string
+          is_income?: boolean | null
+          recipient_account?: string | null
+          recipient_name?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          category?: Database["public"]["Enums"]["transaction_category"]
+          created_at?: string
+          currency?: string
+          description?: string | null
+          id?: string
+          is_income?: boolean | null
+          recipient_account?: string | null
+          recipient_name?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
+      card_status: "active" | "blocked" | "expired" | "pending"
+      card_type: "debit" | "credit" | "virtual"
+      deposit_status: "active" | "closed" | "pending"
+      loan_status: "pending" | "approved" | "rejected" | "active" | "closed"
+      loan_type: "consumer" | "auto" | "mortgage"
+      transaction_category:
+        | "transfer"
+        | "payment"
+        | "deposit"
+        | "loan_payment"
+        | "salary"
+        | "shopping"
+        | "food"
+        | "transport"
+        | "entertainment"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +446,25 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+      card_status: ["active", "blocked", "expired", "pending"],
+      card_type: ["debit", "credit", "virtual"],
+      deposit_status: ["active", "closed", "pending"],
+      loan_status: ["pending", "approved", "rejected", "active", "closed"],
+      loan_type: ["consumer", "auto", "mortgage"],
+      transaction_category: [
+        "transfer",
+        "payment",
+        "deposit",
+        "loan_payment",
+        "salary",
+        "shopping",
+        "food",
+        "transport",
+        "entertainment",
+        "other",
+      ],
+    },
   },
 } as const
