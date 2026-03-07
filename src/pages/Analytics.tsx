@@ -34,14 +34,14 @@ const Analytics = () => {
   }, [user]);
 
   const expenses = transactions.filter(t => !t.is_income);
-  const income = transactions.filter(t => t.is_income);
-  const totalExpense = expenses.reduce((s, t) => s + t.amount, 0);
-  const totalIncome = income.reduce((s, t) => s + t.amount, 0);
+  const incomeT = transactions.filter(t => t.is_income);
+  const totalExpense = expenses.reduce((s: number, t: any) => s + Number(t.amount), 0);
+  const totalIncome = incomeT.reduce((s: number, t: any) => s + Number(t.amount), 0);
 
   // Category breakdown
   const categoryData = Object.entries(
-    expenses.reduce((acc, t) => { acc[t.category] = (acc[t.category] || 0) + t.amount; return acc; }, {} as Record<string, number>)
-  ).map(([key, value]) => ({ name: categoryLabels[key] || key, value, color: categoryColors[key] || "#6b7280" }))
+    expenses.reduce((acc: Record<string, number>, t: any) => { acc[t.category] = (acc[t.category] || 0) + Number(t.amount); return acc; }, {} as Record<string, number>)
+  ).map(([key, value]) => ({ name: categoryLabels[key] || key, value: value as number, color: categoryColors[key] || "#6b7280" }))
    .sort((a, b) => b.value - a.value);
 
   // Monthly chart (last 6 months)
@@ -50,8 +50,8 @@ const Analytics = () => {
     d.setMonth(d.getMonth() - (5 - i));
     const month = d.toLocaleString("ru", { month: "short" });
     const monthStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
-    const exp = expenses.filter(t => t.created_at.startsWith(monthStr)).reduce((s, t) => s + t.amount, 0);
-    const inc = income.filter(t => t.created_at.startsWith(monthStr)).reduce((s, t) => s + t.amount, 0);
+    const exp = expenses.filter((t: any) => t.created_at.startsWith(monthStr)).reduce((s: number, t: any) => s + Number(t.amount), 0);
+    const inc = incomeT.filter((t: any) => t.created_at.startsWith(monthStr)).reduce((s: number, t: any) => s + Number(t.amount), 0);
     return { month, expense: exp, income: inc };
   });
 
