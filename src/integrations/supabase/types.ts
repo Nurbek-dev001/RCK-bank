@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      accounts: {
+        Row: {
+          balance: number
+          created_at: string
+          currency: string
+          id: string
+          is_default: boolean
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          is_default?: boolean
+          name?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          is_default?: boolean
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       cards: {
         Row: {
           card_holder: string
@@ -243,6 +276,7 @@ export type Database = {
           is_income: boolean | null
           recipient_account: string | null
           recipient_name: string | null
+          status: Database["public"]["Enums"]["transfer_status"]
           user_id: string
         }
         Insert: {
@@ -255,6 +289,7 @@ export type Database = {
           is_income?: boolean | null
           recipient_account?: string | null
           recipient_name?: string | null
+          status?: Database["public"]["Enums"]["transfer_status"]
           user_id: string
         }
         Update: {
@@ -267,6 +302,7 @@ export type Database = {
           is_income?: boolean | null
           recipient_account?: string | null
           recipient_name?: string | null
+          status?: Database["public"]["Enums"]["transfer_status"]
           user_id?: string
         }
         Relationships: []
@@ -320,6 +356,7 @@ export type Database = {
         | "transport"
         | "entertainment"
         | "other"
+      transfer_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -465,6 +502,7 @@ export const Constants = {
         "entertainment",
         "other",
       ],
+      transfer_status: ["pending", "approved", "rejected"],
     },
   },
 } as const
